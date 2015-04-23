@@ -1,0 +1,9 @@
+target
+build
+stubwrappers
+activemq-data
+derby.log
+fcrepo-server/test
+.project
+.classpath
+.settings
