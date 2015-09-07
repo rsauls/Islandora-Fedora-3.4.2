@@ -4,6 +4,7 @@ stubwrappers
 activemq-data
 derby.log
 fcrepo-server/test
+fcrepo-server/fischer
 .project
 .classpath
 .settings
