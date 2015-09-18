@@ -646,20 +646,6 @@ public class DefaultManagement
 	    org.fcrepo.server.storage.types.Datastream orig =
 		w.GetDatastream(datastreamId, null);
 
-	    // if provided, check request lastModifiedDate against the datastream,
-	    // rejecting the request if the datastream's mod date is more recent.
-	    if (lastModifiedDate != null) {
-		if (lastModifiedDate.before(w.getLastModDate())) {  // was: if (lastModifiedDate.before(orig.DSCreateDT)) {
-		    String dsDate = DateUtility.convertDateToXSDString(w.getLastModDate());
-		    String reqDate = DateUtility.convertDateToXSDString(lastModifiedDate);
-		    String msg = String.format("%s/%s lastModifiedDate (%s) " +
-					       "is more recent than the " +
-					       "request (%s)", pid,
-					       datastreamId, dsDate, reqDate);
-		    throw new DatastreamLockedException(msg);
-		}
-	    }
-
 	    Date nowUTC; // variable for ds modified date
 
 	    // some forbidden scenarios...
@@ -856,20 +842,6 @@ public class DefaultManagement
 	    Datastream orig =
 		w.GetDatastream(datastreamId, null);
 	    XMLDatastreamProcessor origxml = new XMLDatastreamProcessor(orig);
-
-	    // if provided, check request lastModifiedDate against the datastream,
-	    // rejecting the request if the datastream's mod date is more recent.
-	    if (lastModifiedDate != null) {
-		if (lastModifiedDate.before(orig.DSCreateDT)) {
-		    String dsDate = DateUtility.convertDateToXSDString(w.getLastModDate());
-		    String reqDate = DateUtility.convertDateToXSDString(lastModifiedDate);
-		    String msg = String.format("%s/%s lastModifiedDate (%s) " +
-					       "is more recent than the " +
-					       "request (%s)", pid,
-					       datastreamId, dsDate, reqDate);
-		    throw new DatastreamLockedException(msg);
-		}
-	    }
 
 	    // some forbidden scenarios...
 	    if (orig.DSState.equals("D")) {
