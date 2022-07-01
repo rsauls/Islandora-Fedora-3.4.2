@@ -623,11 +623,11 @@
                 <!--
                   NOTE: The fix for PLXUTILS-120 is crucial for the
                   assembly descriptor regex, therefore we have to insist
-                  on plexus utils >= 2.0.1 for the time being
+                  on plexus utils >= 3.0.16 for the time being
                 -->
                 <groupId>org.codehaus.plexus</groupId>
                 <artifactId>plexus-utils</artifactId>
-                <version>2.0.1</version>
+                <version>3.0.16</version>
               </dependency>
             </dependencies>
             <executions>
